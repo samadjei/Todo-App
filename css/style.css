@@ -1,0 +1,474 @@
+/* THEMES */
+:root {
+	--font-size: 1.8rem;
+}
+
+.dark-theme {
+	--bg-top-image: 0 0 url(../images/bg-desktop-dark.jpg) no-repeat;
+	--main-bg: #171823;
+	--todo-bg: #25273d;
+	--todo-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
+	--font-color: #c8cbe7;
+	--font-color-hover: #fff;
+	--white: #fff;
+	--placeholder-text: #767992;
+	--checkmark-ring: #e3e4f1;
+	--item-text: #c8cbe7;
+	--component-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
+	--list-line: rgba(151, 151, 151, 0.4);
+	--line-through: #4d5067;
+	--input-text: #767992;
+	--instructions: #5b5e7e;
+}
+
+.light-theme {
+	--bg-top-image: 0 0 url(../images/bg-desktop-light.jpg) no-repeat;
+	--main-bg: #fafafa;
+	--todo-bg: #fafafa;
+	--todo-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+	--font-color: #979797;
+	--font-color-hover: #161722;
+	--white: #fff;
+	--placeholder-text: #9495a5;
+	--checkmark-ring: #393a4b;
+	--item-text: #494c6b;
+	--component-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+	--list-line: rgba(151, 151, 151, 0.4);
+	--line-through: #d1d2da;
+	--input-text: #393a4b;
+	--instructions: #9495a5;
+}
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	/* automatically inherit box-sizing from the body element */
+	/* box-sizing: inherit; */
+	box-sizing: border-box;
+	/* box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5); */
+}
+
+/* setting the root font-size  */
+html {
+	box-sizing: border-box;
+	/* change to 1px so that we know that 1rem will equal 10px */
+	/* change the 10px to a percentage which will translate to the percentage given by the browser */
+	/* 10/16*100 */
+	/* this method is used when a user decides to adjust the font size on the browser  */
+	font-size: 62.5%;
+}
+
+body {
+	font-family: 'Josefin Sans', sans-serif;
+	background: var(--bg-top-image);
+	background-color: var(--main-bg);
+	background-size: contain;
+	background-size: 100% 30rem;
+	font-size: 16px;
+	height: 100vh;
+	color: var(--input-text);
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+ul {
+	list-style: none;
+}
+
+li {
+	font-size: var(--font-size);
+	line-height: var(--font-size);
+	letter-spacing: -0.25px;
+	color: var(--font-color);
+}
+
+img {
+	max-width: 100%;
+}
+
+.container {
+	width: 54rem;
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.flex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+/* Switches the stars when checked */
+.theme-block #theme {
+	display: none;
+}
+
+.theme-block #theme + label::before {
+	content: '';
+	background: url(../images/icon-sun.svg);
+	display: block;
+	width: 26px;
+	height: 26px;
+	cursor: pointer;
+}
+
+.theme-block #theme:checked + label::before {
+	background: url(../images/icon-moon.svg);
+}
+
+/* HEADER */
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 7rem;
+	padding-bottom: 4rem;
+}
+
+.title {
+	font-weight: bold;
+	font-size: 4rem;
+	text-transform: uppercase;
+	line-height: 4rem;
+	letter-spacing: 1.5rem;
+	color: var(--white);
+}
+
+.list-input {
+	margin-bottom: 2.4rem;
+}
+
+/* .text-input #theme {
+	background-color: var(--main-bg);
+} */
+
+.list {
+	box-shadow: var(--component-shadow);
+}
+
+.form span {
+	width: 2.5rem;
+	height: 2.5rem;
+	border: 1px solid var(--font-color);
+	display: block;
+	border-radius: 5rem;
+	position: absolute;
+	left: 2.6rem;
+	top: var(--font-size);
+	z-index: 9;
+}
+
+.todo-input {
+	position: relative;
+	background: var(--todo-bg);
+	width: 100%;
+	padding: 2.4rem 6.4rem;
+	height: 6.4rem;
+	border: none;
+	border-radius: 0.5rem;
+}
+
+input::placeholder {
+	font-family: 'Josefin Sans';
+	font-size: var(--font-size);
+	line-height: var(--font-size);
+	letter-spacing: -0.25px;
+	color: var(--placeholder-text);
+}
+
+.form {
+	position: relative;
+}
+
+.checkbox {
+	position: absolute;
+	left: 2.4rem;
+	top: 35%;
+	width: 2.4rem;
+	height: 2.4rem;
+	border: 1px solid #e3e4f1;
+}
+
+.list-items {
+	background: var(--todo-bg);
+	/* padding: 2.1rem 2.4rem; */
+	width: 100%;
+	height: 6.3rem;
+	border-bottom: 1px solid var(--list-line);
+	display: flex;
+	align-items: center;
+}
+
+.list-items:first-child {
+	border-top-left-radius: 0.5rem;
+	border-top-right-radius: 0.5rem;
+}
+
+/* Draggable */
+.draggable {
+	cursor: move;
+}
+.draggable.dragging {
+	opacity: 0.5;
+}
+
+.text {
+	font-size: var(--font-size);
+	line-height: var(--font-size);
+	letter-spacing: -0.25px;
+	color: var(--item-text);
+}
+
+/* Bottom Items Toggle */
+.bottom-text {
+	font-size: 1.4rem;
+	line-height: 1.4rem;
+	letter-spacing: -0.194444px;
+	color: var(--instructions);
+}
+
+/* Bottom Items */
+
+.bottom-items {
+	background: var(--todo-bg);
+	padding: 0 2.4rem;
+	width: 100%;
+	height: 5rem;
+	border-bottom-left-radius: 0.5rem;
+	border-bottom-right-radius: 0.5rem;
+}
+
+.mobile-bottom-items {
+	display: none;
+}
+
+.items-toggle {
+	font-weight: bold;
+	transition: all 0.2s ease-out;
+}
+
+.items-toggle:hover {
+	color: var(--item-text);
+}
+
+.flex-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/* CHECK */
+ul li {
+	padding: 0 10px 0 25px;
+	min-height: 65px;
+	border-bottom: 1px solid var(--font-color);
+	position: relative;
+}
+
+/* Hiding the initial checkbox */
+[type='checkbox'] {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	width: 0;
+	height: 0;
+}
+
+[type='text'] {
+	font-family: 'Josefin Sans';
+	font-size: 18px;
+	line-height: 18px;
+	letter-spacing: -0.25px;
+	color: var(--input-text);
+}
+
+ul li label {
+	position: relative;
+	cursor: pointer;
+	padding: 2px 0 0 48px;
+}
+
+ul li.hidden {
+	display: none;
+}
+
+/* Positioning the checkbox in the list items */
+.checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 2.5rem;
+	width: 2.5rem;
+}
+
+[type='checkbox'] ~ .checkmark {
+	border: 1px solid var(--font-color);
+	border-radius: 5rem;
+}
+
+/* Changes the colour of the checkmark border when hovered */
+[type='checkbox'] ~ .checkmark:hover {
+	border: 0;
+	padding: 1px;
+	background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+
+[type='checkbox'] ~ .checkmark:hover::before {
+	content: '';
+	width: 2.3rem;
+	height: 2.3rem;
+	border-radius: 50%;
+	background: var(--todo-bg);
+	display: block;
+}
+
+[type='checkbox']:checked ~ .checkmark {
+	background: center url(../images/icon-check.svg) no-repeat, linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+
+[type='checkbox']:checked ~ .text {
+	text-decoration: line-through;
+	color: var(--line-through);
+}
+
+.remove {
+	background: url(../images/icon-cross.svg) no-repeat;
+	width: 18px;
+	height: 18px;
+	display: none;
+	cursor: pointer;
+	position: absolute;
+	right: 25px;
+	top: 25px;
+}
+
+ul li:hover .remove {
+	display: block;
+}
+
+.filter input[type='radio'] {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
+
+.filter label {
+	cursor: pointer;
+	padding: 0 10px;
+}
+
+.filter label:hover {
+	color: var(--font-color-hover);
+}
+
+.filter input[type='radio']:checked ~ span {
+	color: hsl(221, 62%, 52%);
+}
+
+.clear:hover {
+	cursor: pointer;
+	color: var(--font-color-hover);
+}
+
+.instructions {
+	margin-top: 4.9rem;
+	text-align: center;
+	color: var(--instructions);
+}
+
+/* Media Queries */
+@media screen and (max-width: 60rem) {
+	:root {
+		--font-size: 1.6rem;
+	}
+
+	.dark-theme {
+		--bg-top-image: 0 0 url(../images/bg-mobile-dark.jpg) no-repeat;
+	}
+
+	.light-theme {
+		--bg-top-image: 0 0 url(../images/bg-mobile-light.jpg) no-repeat;
+	}
+
+	.header {
+		padding-top: 4.8rem;
+	}
+	.title {
+		font-size: 3rem;
+	}
+
+	.container {
+		max-width: 100%;
+		padding: 0 2.4rem;
+	}
+
+	[type='checkbox'] ~ .checkmark:hover::before {
+		content: '';
+		width: 2rem;
+		height: 2rem;
+	}
+
+	.checkmark {
+		position: absolute;
+		top: -3px;
+		left: 0;
+		height: 2.5rem;
+		width: 2.5rem;
+	}
+
+	ul li label {
+		padding: 2px 0 0 3.5rem;
+	}
+
+	.list-items {
+		height: 7.1rem;
+	}
+
+	.flex-row {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.desktop-bottom {
+		display: none;
+	}
+
+	.mobile-bottom-items {
+		display: flex;
+		justify-content: space-between;
+		background: var(--todo-bg);
+		padding: 0 2.4rem;
+		width: 100%;
+		height: 5rem;
+		border-bottom-left-radius: 0.5rem;
+		border-bottom-right-radius: 0.5rem;
+	}
+
+	.mobile-bottom-flex {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.bottom-items {
+		margin-top: 1.6rem;
+		padding: 0 2rem;
+		border-top-left-radius: 0.5rem;
+		border-top-right-radius: 0.5rem;
+		box-shadow: var(--component-shadow);
+	}
+
+	.bottom-text {
+		font-size: 1.4rem;
+		line-height: 1.4rem;
+	}
+}
